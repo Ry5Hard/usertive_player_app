@@ -1,0 +1,45 @@
+.upperBar {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none;
+
+    button {
+        width: 20px;
+        height: 20px;
+        font-size: 0;
+        background: transparent;
+        border-radius: 0;
+        border: 0;
+        pointer-events: all;
+
+        &.backButton {
+            background: url('../../assets/images/svgIcons/back_ico.svg') no-repeat center center /contain transparent;
+        }
+
+        &.songInfoButton {
+            background: url('../../assets/images/svgIcons/more_ico.svg') no-repeat center center /contain transparent;
+        }
+    }
+
+    .albumInfo {
+        .albumLabel {
+            color: #6f729c;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+    }
+}

@@ -1,0 +1,185 @@
+.mainBodyComponent {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 640px;
+    height: 100vh;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+
+    .carousel {
+        div[class*="slick-slide"] {
+            .imageWrapper {
+                transition-duration: .2s;
+                transition-delay: .5s;
+                padding: 40px;
+
+                img {
+                    width: 100%;
+                    border-radius: 100%;
+                }
+            }
+
+            &[class*="slick-current"] {
+                .imageWrapper {
+                    padding: 0;
+                }
+            }
+        }
+    }
+
+    .songData {
+        margin: 10px 0;
+
+        .name {
+            font-weight: 900;
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .artist {
+            color: #6f729c;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+    }
+
+    .playerControls {
+        padding: 10px 15px;
+
+        .buttonsGroup {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 3px 15px;
+
+            .controlButton {
+                width: 20px;
+                height: 20px;
+                font-size: 0;
+                background: transparent;
+                border-radius: 0;
+                border: 0;
+
+                &.shuffleButton {
+                    background: url('../../assets/images/svgIcons/shuffle_ico.svg') no-repeat center center transparent;
+                }
+
+                &.prevButton {
+                    background: url('../../assets/images/svgIcons/previous_ico.svg') no-repeat center center transparent;
+                }
+
+                &.nextButton {
+                    background: url('../../assets/images/svgIcons/next_ico.svg') no-repeat center center transparent;
+                }
+
+                &.loopButton {
+                    background: url('../../assets/images/svgIcons/repeat_ico.svg') no-repeat center center transparent;
+                }
+            }
+
+            .playButton {
+                width: 80px;
+                height: 80px;
+                font-size: 0;
+                background: transparent;
+                border-radius: 0;
+                border: 0;
+                background: url('../../assets/images/Play_inactive.png') no-repeat center center /cover transparent;
+                position: relative;
+
+                &::after {
+                    position: absolute;
+                    top: 49%;
+                    left: 53%;
+                    transform: translate(-50%, -50%);
+                    display: inline-block;
+                    width: 160%;
+                    height: 160%;
+                    content: '';
+                    background: url('../../assets/images/Play_active.png') no-repeat center center /cover transparent;
+                    pointer-events: none;
+                    opacity: 0;
+                    transition-duration: .1s;
+                }
+
+                &.active {
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .timeBar {
+            padding: 30px 15px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            .time {
+                font-size: 12px;
+                color: #9a9b9b;
+            }
+
+            .progressBar {
+                flex-basis: 70%;
+                min-width: 70%;
+                margin: 0 10px;
+                height: 1px;
+                display: inline-block;
+                background: #00c9b7;
+                position: relative;
+
+                &::before,
+                &::after {
+                    height: 3px;
+                    top: -1px;
+                    position: absolute;
+                    content: '';
+                    display: inline-block;
+                    background: #00c9b7;
+                }
+
+                &::before {
+                    left: 0;
+                    width: 20px;
+                    border-radius: 0 5px 5px 0;
+                }
+
+                &::after {
+                    width: 3px;
+                    right: 0;
+                    border-radius: 100%;
+                }
+
+            }
+        }
+
+    }
+
+    .soundWave {
+        position: absolute;
+        bottom: 120px;
+        left: 0;
+        height: 30px;
+        width: 100%;
+        text-align: left;
+
+        .soundBar {
+            display: inline-block;
+            vertical-align: bottom;
+            background: #755dd5;
+            border-radius: 40% 40% 0 0;
+            width: calc(100% / 180);
+        }
+    }
+}

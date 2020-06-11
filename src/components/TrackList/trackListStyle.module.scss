@@ -1,0 +1,241 @@
+.trackLine {
+    display: flex;
+    align-items: flex-end;
+    color: #1b1b1b;
+    justify-content: space-between;
+
+    .dottedLine {
+        flex-grow: 1;
+        margin: 0 5px;
+        align-self: flex-end;
+        display: inline-block;
+        height: 0;
+        border-bottom: 1px dotted #1b1b1b;
+    }
+
+    .time {
+        color: #6f729c;
+        font-size: 13px;
+    }
+
+}
+
+.trackListComponent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    z-index: 1;
+
+    .trackBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: #fff;
+        padding: 10px 20px;
+        justify-content: space-between;
+        font-size: 10px;
+        position: relative;
+        top: 0;
+        transition-property: top;
+        transition-delay: .55s;
+        transition-duration: .2s;
+        transition-timing-function: ease-in;
+
+        .showTrackListButton {
+            width: 20px;
+            height: 15px;
+            font-size: 0;
+            background: url('../../assets/images/svgIcons/playlist_ico.svg') no-repeat 0 0 /contain transparent;
+            border: 0;
+        }
+
+        .nextTrackInfo {
+            margin-left: 20px;
+            flex-grow: 1;
+
+            .label {
+                font-weight: 400;
+                color: #6f729c;
+                display: block;
+            }
+        }
+    }
+
+    .trackList {
+        background: #fff;
+        position: absolute;
+        bottom: -100vh;
+        width: 100%;
+        height: 100vh;
+        font-size: 13px;
+        transition-property: bottom;
+        transition-delay: 0s;
+        transition-duration: .5s;
+        transition-timing-function: ease-out;
+
+        .trackListHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 15px 20px;
+            position: relative;
+            z-index: 1;
+
+            .overlayBackground {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #1f1937;
+                z-index: -1;
+
+                &::after {
+                    content: '';
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    background: url('../../assets/images/bg_image.jpg') no-repeat 0 0 /cover #1f1937;
+                    background-blend-mode: luminosity;
+                    opacity: .15;
+                }
+            }
+
+            button {
+                border: 0;
+                font-size: 0;
+
+                &.playButton {
+                    height: 40px;
+                    width: 40px;
+                    background: url('../../assets/images/Play_inactive.png') no-repeat 0 0 /contain transparent;
+                    position: relative;
+
+                    &::after {
+                        position: absolute;
+                        top: 49%;
+                        left: 53%;
+                        transform: translate(-50%, -50%);
+                        display: inline-block;
+                        width: 160%;
+                        height: 160%;
+                        content: '';
+                        background: url('../../assets/images/Play_active.png') no-repeat center center /cover transparent;
+                        pointer-events: none;
+                        opacity: 0;
+                        transition-duration: .1s;
+                    }
+
+                    &.active {
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+            }
+
+            .songInfo {
+                margin: 0 20px 0 40px;
+                flex-grow: 1;
+                text-align: left;
+
+                .title {
+                    font-size: 13px;
+                    font-weight: 900;
+                    color: #fff;
+                }
+
+                .artist {
+                    font-size: 10px;
+                    font-weight: 300;
+                    color: #6f729c;
+                }
+            }
+        }
+
+        ol {
+            width: 100%;
+            max-height: calc(100% - 70px);
+            overflow: auto;
+            margin: 0;
+            padding: 20px 30px 100px 40px;
+
+            li {
+                margin: 15px 0;
+                font-size: 13px;
+                color: #1b1b1b;
+
+                .trackLine {
+                    padding-left: 15px;
+                }
+            }
+        }
+
+        .bottomBar {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            padding: 10px 40px;
+            text-align: center;
+            background: #fff;
+
+            &::before {
+                content: '';
+                height: 100%;
+                width: 100%;
+                top: -100%;
+                left: 0;
+                display: inline-block;
+                position: absolute;
+                background: rgb(255, 255, 255);
+                background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+                background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+                background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff", GradientType=1);
+            }
+
+            .shuffleButton {
+                width: 100%;
+                display: block;
+                padding: 10px 20px;
+                background: #755dd5;
+                color: #fff;
+                font-weight: 900;
+                font-size: 13px;
+                border-radius: 20px;
+                border: none;
+                text-transform: uppercase;
+            }
+
+            .hideListButton {
+                background: url('../../assets/images/svgIcons/hide_ico.svg') no-repeat 0 0 /contain transparent;
+                border: none;
+                font-size: 0;
+                width: 20px;
+                height: 20px;
+                margin-top: 20px;
+
+            }
+        }
+    }
+
+    &.listVisible {
+        .trackBar {
+            top: 50px;
+            transition-delay: 0s;
+        }
+
+        .trackList {
+            transition-delay: .3s;
+            bottom: 0;
+        }
+    }
+}
